@@ -1,0 +1,4 @@
+This question might be too old already but I still think label makes our 
+code become harder to read. Instead of breaking the for inside select, just set a flag for the loop and handle it inside select-case before invoking break. For example:
+Totally agree with Vaelin in the comment. Declaring that flag inside the scope of the for loop can avoid memory leak and conflict with other variables in current scope, just in case
+ we have a same variable name alread
