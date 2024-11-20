@@ -1,6 +1,10 @@
 package ui
 
+import "fyne.io/fyne/v2/container"
+
 func Setup(app *AppInit) {
 	swiatchesContainer := BuildSwatches(app)
-	app.PixlWindow.SetContent((swiatchesContainer))
+	colorPicker := SetupColorPicker(app)
+	appLayout := container.NewBorder(nil, swiatchesContainer, nil, colorPicker, app.PixlCanvas)
+	app.PixlWindow.SetContent(appLayout)
 }
