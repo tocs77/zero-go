@@ -86,3 +86,29 @@ func (pxCanvas *PxCanvas) TryPan(previousCoord *fyne.PointEvent, ev *desktop.Mou
 		pxCanvas.Pan(*previousCoord, ev.PointEvent)
 	}
 }
+
+// Brushable interface
+func (pxCanvas *PxCanvas) SetColor(color color.Color, x, y int) {
+	if nrgba, ok := pxCanvas.PixelData.(*image.NRGBA); ok {
+		nrgba.Set(x, y, color)
+	}
+
+	if rgba, ok := pxCanvas.PixelData.(*image.RGBA); ok {
+		rgba.Set(x, y, color)
+	}
+	pxCanvas.Refresh()
+}
+
+func (pxCanvas *PxCanvas) MouseToCanvasXY(ev *desktop.MouseEvent) (*int, *int) {
+	bounds := pxCanvas.Bounds()
+	if !InBounds(ev.PointEvent.Position, bounds) {
+		return nil, nil
+	}
+	pxSize := float32(pxCanvas.PxSize)
+	xOffset := pxCanvas.CnavasOffset.X
+	yOffset := pxCanvas.CnavasOffset.Y
+
+	x := int((ev.PointEvent.Position.X - xOffset) / pxSize)
+	y := int((ev.PointEvent.Position.Y - yOffset) / pxSize)
+	return &x, &y
+}
