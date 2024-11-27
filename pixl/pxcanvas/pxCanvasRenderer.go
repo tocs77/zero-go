@@ -9,6 +9,11 @@ type PxCanvasRenderer struct {
 	pxCanvas     *PxCanvas
 	canvasImage  *canvas.Image
 	canvasBorder []canvas.Line
+	canvasCursor []fyne.CanvasObject
+}
+
+func (renderer *PxCanvasRenderer) SetCursor(objects []fyne.CanvasObject) {
+	renderer.canvasCursor = objects
 }
 
 func (renderer *PxCanvasRenderer) MinSize() fyne.Size {
@@ -21,6 +26,7 @@ func (renderer *PxCanvasRenderer) Objects() []fyne.CanvasObject {
 		objecs = append(objecs, &renderer.canvasBorder[i])
 	}
 	objecs = append(objecs, renderer.canvasImage)
+	objecs = append(objecs, renderer.canvasCursor...)
 	return objecs
 }
 

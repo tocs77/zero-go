@@ -18,9 +18,8 @@ type PxCanvasConfig struct {
 }
 
 type State struct {
-	BrushColor color.Color
-	// BrushType      BrushType
-	BrushType      int
+	BrushColor     color.Color
+	BrushType      BrushType
 	SwatchSelected int
 	FilePath       string
 }
