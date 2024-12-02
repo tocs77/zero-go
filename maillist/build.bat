@@ -1,5 +1,3 @@
-docker build -f Dockerfile.go.build -t go-protobuf .
-
 setlocal
 FOR /F "tokens=*" %%i in ('type .env') do SET %%i
 docker build -f Dockerfile.go.build --build-arg PROTOC_VERSION=%PROTOC_VERSION%  ^
