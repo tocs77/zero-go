@@ -9,6 +9,7 @@ require (
 	github.com/alexflint/go-arg v1.5.1
 	github.com/chai2010/webp v1.1.1
 	github.com/google/uuid v1.6.0
+	github.com/lusingander/colorpicker v0.7.3
 	golang.org/x/exp v0.0.0-20241009180824-f66d83c29e7c
 )
 
@@ -30,7 +31,6 @@ require (
 	github.com/gopherjs/gopherjs v1.17.2 // indirect
 	github.com/jeandeaual/go-locale v0.0.0-20240223122105-ce5225dcaa49 // indirect
 	github.com/jsummers/gobmp v0.0.0-20230614200233-a9de23ed2e25 // indirect
-	github.com/lusingander/colorpicker v0.7.3 // indirect
 	github.com/nicksnyder/go-i18n/v2 v2.4.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/rymdport/portal v0.2.6 // indirect
