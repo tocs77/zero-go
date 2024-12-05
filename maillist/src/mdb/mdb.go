@@ -2,6 +2,7 @@ package mdb
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
 	"time"
 
@@ -25,6 +26,7 @@ func TryCreate(db *sql.DB) {
 		);
 
 	)`)
+	fmt.Println(sqlite3.Version())
 	if err != nil {
 		if sqlError, ok := err.(sqlite3.Error); ok {
 			// code 1 == table already exists
