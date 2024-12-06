@@ -84,7 +84,7 @@ func GetEmail(db *sql.DB) http.Handler {
 		entry := mdb.EmailEntry{}
 		fromJson(r.Body, &entry)
 		returnJson(w, func() (interface{}, error) {
-			log.Printf("Getemail %v\n", entry.Email)
+			log.Printf("Get email %v\n", entry.Email)
 			return mdb.GetEmail(db, entry.Email)
 		})
 	})
@@ -147,14 +147,18 @@ func GetEmailBatch(db *sql.DB) http.Handler {
 }
 
 func Serve(db *sql.DB, bind string) {
+
 	http.Handle("/email/create", CreateEmail(db))
 	http.Handle("/email/get", GetEmail(db))
 	http.Handle("/email/get_batch", GetEmailBatch(db))
 	http.Handle("/email/update", UpdateEmail(db))
 	http.Handle("/email/delete", DeleteEmail(db))
 
+	log.Printf("Server started on %s\n", bind)
 	err := http.ListenAndServe(bind, nil)
+
 	if err != nil {
 		log.Fatalf("failed to start server: %v", err)
 	}
+
 }

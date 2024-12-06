@@ -2,8 +2,8 @@ services:
   maillist:
     image: "${IMAGE_NAME}"
     environment:
-      - MAILLIST_DB_PATH=/usr/data
-      - MAILLIST_BIND_JSON=8090
+      - MAILLIST_DB_PATH=/usr/data/maillist.db
+      - MAILLIST_BIND_JSON=:8080
     ports:
       - "8080:8080"
     volumes:
