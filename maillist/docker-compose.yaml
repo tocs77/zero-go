@@ -4,6 +4,7 @@ services:
     environment:
       - MAILLIST_DB_PATH=/usr/data/maillist.db
       - MAILLIST_BIND_JSON=:8080
+      - MAILLIST_BIND_GRPC=:8081
     ports:
       - "8080:8080"
     volumes:
